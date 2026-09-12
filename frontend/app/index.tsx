@@ -85,7 +85,7 @@ function ColorfulTitle({ text, style }: { text: string; style: any }) {
   const fontSize = (style && style.fontSize) || 34;
   const hatSize = fontSize * 0.9;
   return (
-    <View style={{ flexDirection: "row", justifyContent: "center", flexWrap: "wrap" }}>
+    <View style={{ flexDirection: "row", justifyContent: "center", flexWrap: "nowrap" }}>
       {Array.from(text).map((c, i) => {
         if (c === " ") {
           return (
@@ -150,7 +150,7 @@ const useStyles = makeStyles((colors) => ({
     zIndex: 2,
   },
   brand: {
-    fontSize: 44,
+    fontSize: 36,
     fontWeight: "900",
     letterSpacing: -0.8,
     textAlign: "center",
