@@ -14,6 +14,7 @@ const HERO_IMAGE =
 const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
+const ADHESION_URL = "https://www.helloasso.com/"; // TODO: remplacer par l'URL exacte de la page d'adhésion HelloAsso
 
 const LETTER_COLORS = ["#0764B2", "#E10275"];
 
@@ -170,6 +171,9 @@ const useStyles = makeStyles((colors) => ({
   ctaSecondary: {
     backgroundColor: "#2A9D8F",
   },
+  ctaTertiary: {
+    backgroundColor: "#264653",
+  },
   ctaPressed: {
     transform: [{ scale: 0.98 }],
     opacity: 0.95,
@@ -241,6 +245,19 @@ export default function Home() {
           android_ripple={{ color: colors.surfaceTertiary }}
         >
           <Text style={styles.ctaTextSecondary}>Table</Text>
+        </Pressable>
+
+        <Pressable
+          testID="adherer-button"
+          onPress={() => openLink(ADHESION_URL)}
+          style={({ pressed }) => [
+            styles.cta,
+            styles.ctaTertiary,
+            pressed && styles.ctaPressed,
+          ]}
+          android_ripple={{ color: colors.surfaceTertiary }}
+        >
+          <Text style={styles.ctaTextSecondary}>Adhérer</Text>
         </Pressable>
       </View>
     </View>
