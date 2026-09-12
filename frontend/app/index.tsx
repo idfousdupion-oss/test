@@ -81,8 +81,8 @@ function ColorfulTitle({ text, style }: { text: string; style: any }) {
                 pointerEvents="none"
                 style={{
                   position: "absolute",
-                  top: -hatSize * 0.55,
-                  left: -hatSize * 0.1,
+                  top: -hatSize * 0.35,
+                  left: -hatSize * 0.05,
                   transform: [{ rotate: "-22deg" }],
                   zIndex: 2,
                 }}
@@ -163,12 +163,12 @@ const useStyles = makeStyles((colors) => ({
     elevation: 6,
   },
   ctaPrimary: {
-    backgroundColor: colors.brandPrimary,
-    shadowColor: colors.brandPrimary,
+    backgroundColor: "#D62828",
+    shadowColor: "#D62828",
     shadowOpacity: 0.35,
   },
   ctaSecondary: {
-    backgroundColor: colors.surfaceInverse,
+    backgroundColor: "#264653",
   },
   ctaPressed: {
     transform: [{ scale: 0.98 }],
