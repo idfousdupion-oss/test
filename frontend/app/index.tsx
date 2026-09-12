@@ -209,14 +209,6 @@ export default function Home() {
       </View>
 
       <View style={styles.content}>
-        <View style={styles.heroCard}>
-          <Image
-            source={{ uri: HERO_IMAGE }}
-            style={styles.heroImage}
-            contentFit="contain"
-            transition={300}
-          />
-        </View>
       </View>
 
       <View
