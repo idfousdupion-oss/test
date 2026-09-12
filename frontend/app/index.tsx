@@ -9,7 +9,7 @@ import Svg, { Circle, Path, Rect } from "react-native-svg";
 import { makeStyles, useTheme } from "@/src/theme";
 
 const BG_IMAGE =
-  "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=1200&q=80";
+  "https://images.unsplash.com/photo-1585504198199-20277593b94f?auto=format&fit=crop&w=1200&q=80";
 
 const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
@@ -143,10 +143,10 @@ const useStyles = makeStyles((colors) => ({
     zIndex: 1,
   },
   header: {
+    flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 24,
-    paddingBottom: 8,
     alignItems: "center",
+    justifyContent: "center",
     zIndex: 2,
   },
   brand: {
@@ -170,9 +170,7 @@ const useStyles = makeStyles((colors) => ({
     textShadowRadius: 6,
   },
   center: {
-    flex: 1,
     paddingHorizontal: 24,
-    justifyContent: "center",
     gap: 14,
   },
   cta: {
@@ -244,7 +242,7 @@ export default function Home() {
           pointerEvents="none"
         />
         <View style={styles.overlay}>
-          <View style={[styles.header, { paddingTop: insets.top + 24 }]}>
+          <View style={[styles.header, { paddingTop: insets.top }]}>
             <ColorfulTitle text="Fous du Pion" style={styles.brand} />
             <Text style={styles.tagline}>Venez jouer avec nous</Text>
           </View>
