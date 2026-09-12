@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { ImageBackground, Pressable, Text, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import * as Haptics from "expo-haptics";
@@ -8,7 +9,7 @@ import Svg, { Circle, Path, Rect } from "react-native-svg";
 import { makeStyles, useTheme } from "@/src/theme";
 
 const BG_IMAGE =
-  "https://images.unsplash.com/photo-1543092587-d8b8feaf362b?auto=format&fit=crop&w=1200&q=80";
+  "https://images.unsplash.com/photo-1585504198199-20277593b94f?auto=format&fit=crop&w=1200&q=80";
 
 const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
@@ -133,11 +134,20 @@ const useStyles = makeStyles((colors) => ({
   overlay: {
     flex: 1,
   },
+  topGradient: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "38%",
+    zIndex: 1,
+  },
   header: {
     paddingHorizontal: 24,
     paddingTop: 24,
     paddingBottom: 8,
     alignItems: "center",
+    zIndex: 2,
   },
   brand: {
     fontSize: 44,
@@ -227,6 +237,12 @@ export default function Home() {
         style={styles.bg}
         resizeMode="cover"
       >
+        <LinearGradient
+          colors={["rgba(6,10,22,0.72)", "rgba(6,10,22,0.35)", "rgba(6,10,22,0)"]}
+          locations={[0, 0.35, 0.7]}
+          style={styles.topGradient}
+          pointerEvents="none"
+        />
         <View style={styles.overlay}>
           <View style={[styles.header, { paddingTop: insets.top + 24 }]}>
             <ColorfulTitle text="Fous du Pion" style={styles.brand} />
