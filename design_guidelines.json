@@ -1,0 +1,124 @@
+{
+  "app_name": "MonAssociation Buvette",
+  "personality": "4 Tactile / Playful LIGHT",
+  "personality_one_liner": "A friendly, touchable, and approachable community launcher that feels welcoming and highly focused.",
+  "color": {
+    "surface": "#FDFCF8",
+    "onSurface": "#1F1D1B",
+    "surfaceSecondary": "#FFFFFF",
+    "onSurfaceSecondary": "#1F1D1B",
+    "surfaceTertiary": "#F2EFEB",
+    "onSurfaceTertiary": "#4A4744",
+    "surfaceInverse": "#2C2A28",
+    "onSurfaceInverse": "#FDFCF8",
+    "brand": "#DE6B48",
+    "onBrand": "#FFFFFF",
+    "brandPrimary": "#DE6B48",
+    "onBrandPrimary": "#FFFFFF",
+    "brandSecondary": "#E8B298",
+    "onBrandSecondary": "#2C2A28",
+    "brandTertiary": "#F4D9CE",
+    "onBrandTertiary": "#DE6B48",
+    "success": "#5C8D6D",
+    "onSuccess": "#FFFFFF",
+    "warning": "#E5A93B",
+    "onWarning": "#1F1D1B",
+    "error": "#C65B53",
+    "onError": "#FFFFFF",
+    "info": "#7A7067",
+    "onInfo": "#FFFFFF",
+    "border": "#EAE5DF",
+    "borderStrong": "#D1C9C0",
+    "divider": "#EAE5DF",
+    "muted": "#8A847E"
+  },
+  "typography": {
+    "displayFontFamily": "Figtree",
+    "textFontFamily": "Nunito",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Generous spacing. Use chunky margins to make elements feel like touchable objects.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": 2,
+  "navigation": "stack_only",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use blur on the FAB/close button when over the webview",
+      "Use subtle glass overlay if text is overlaid on the community image"
+    ],
+    "dont's": [
+      "Don't blur the primary Buvette CTA; it needs to be solid, opaque, and chunky."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Home",
+      "purpose": "A single, highly focused launch screen that welcomes the user and presents one clear action.",
+      "states": {
+        "loading": "Centered loading spinner with the brand color",
+        "empty": "N/A for this static launcher",
+        "error": "Message: 'Impossible de charger l'application', Retry button"
+      },
+      "layout": "Center the layout perfectly. Place a beautiful, large hero image (community gathering) inside a chunky rounded container (radius `lg`, shadow 2) with generous `xl` outer padding. Below the image, center the title 'Mon Association' in large `2xl` Figtree font. Place the primary CTA 'Buvette' in the bottom thumb zone, sticky above the safe area, spanning 100% width (minus padding). The button should be chunky (min height 56pt, radius `pill`) and solid `brandPrimary`."
+    },
+    {
+      "name": "BuvetteWebView",
+      "purpose": "In-app browser to display the HelloAsso campaign.",
+      "states": {
+        "loading": "Centered spinner over `surface`",
+        "empty": "N/A",
+        "error": "Message: 'Impossible de charger la page HelloAsso', Retry button"
+      },
+      "layout": "Full screen `react-native-webview`. Add a floating Back/Close button (Glass or solid `surfaceInverse`) in the top right or top left safe area to allow the user to easily return to the Home screen."
+    }
+  ],
+  "images": {
+    "hero_community": {
+      "url": "https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBnYXRoZXJpbmd8ZW58MHx8fHwxNzg5MjE4Njc3fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "A group of people standing around each other in a community gathering"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Install `react-native-webview` and ensure it takes up flex 1 on the WebView screen.",
+    "Implement the Home screen exactly as a single-action micro-app: hero image -> big title -> massive sticky CTA.",
+    "Use `Figtree` for the display font ('Mon Association' title) and `Nunito` for the button and body text.",
+    "Follow the Tactile/Playful personality: buttons should be pill-shaped, chunky, and have a slight press overshoot animation if possible.",
+    "Do NOT use any blue, indigo, or purple colors. The color palette relies on warm cream and vibrant coral (`#DE6B48`).",
+    "Include a prominent 'Close' button overlaid on the WebView so users can return to the Home screen.",
+    "Ensure touch targets are at least 56pt high for the primary CTA."
+  ]
+}
