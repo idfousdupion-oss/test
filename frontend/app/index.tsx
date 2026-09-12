@@ -140,7 +140,7 @@ const useStyles = makeStyles((colors) => ({
     alignItems: "center",
   },
   brand: {
-    fontSize: 36,
+    fontSize: 44,
     fontWeight: "900",
     letterSpacing: -0.8,
     textAlign: "center",
