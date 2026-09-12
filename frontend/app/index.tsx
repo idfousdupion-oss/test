@@ -231,7 +231,7 @@ export default function Home() {
         <View style={styles.overlay}>
           <View style={[styles.header, { paddingTop: insets.top + 24 }]}>
             <ColorfulTitle text="Fous du Pion" style={styles.brand} />
-            <Text style={styles.tagline}>Association de jeux de société</Text>
+            <Text style={styles.tagline}>Venez jouer avec nous</Text>
           </View>
 
           <View style={styles.center}>
