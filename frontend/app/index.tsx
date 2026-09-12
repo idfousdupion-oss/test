@@ -16,7 +16,7 @@ const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
 const ADHESION_URL = "https://www.helloasso.com/"; // TODO: remplacer par l'URL exacte de la page d'adhésion HelloAsso
 
-const LETTER_COLORS = ["#0764B2", "#E10275"];
+const LETTER_COLORS = ["#C0392B", "#F4C542"];
 
 function JesterHat({ size = 30 }: { size?: number }) {
   return (
@@ -143,10 +143,10 @@ const useStyles = makeStyles((colors) => ({
     zIndex: 1,
   },
   header: {
-    flex: 1,
     paddingHorizontal: 24,
+    paddingTop: 24,
+    paddingBottom: 8,
     alignItems: "center",
-    justifyContent: "center",
     zIndex: 2,
   },
   brand: {
@@ -170,7 +170,9 @@ const useStyles = makeStyles((colors) => ({
     textShadowRadius: 6,
   },
   center: {
+    flex: 1,
     paddingHorizontal: 24,
+    justifyContent: "center",
     gap: 14,
   },
   cta: {
@@ -242,7 +244,7 @@ export default function Home() {
           pointerEvents="none"
         />
         <View style={styles.overlay}>
-          <View style={[styles.header, { paddingTop: insets.top }]}>
+          <View style={[styles.header, { paddingTop: insets.top + 24 }]}>
             <ColorfulTitle text="Fous du Pion" style={styles.brand} />
             <Text style={styles.tagline}>Venez jouer avec nous</Text>
           </View>
