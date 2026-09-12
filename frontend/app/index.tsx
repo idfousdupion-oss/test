@@ -14,7 +14,8 @@ const BG_IMAGE =
 const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
-const ADHESION_URL = "https://www.helloasso.com/"; // TODO: remplacer par l'URL exacte de la page d'adhésion HelloAsso
+const ADHESION_URL =
+  "https://www.helloasso.com/associations/les-fous-du-pion/paiements/adhesion-readhesion-fous-du-pion?utm_source=app_ha&utm_campaign=share_campaign_button&utm_medium=android";
 
 const LETTER_COLORS = ["#FFFFFF", "#FFFFFF"];
 
