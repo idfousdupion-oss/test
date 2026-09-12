@@ -237,12 +237,6 @@ export default function Home() {
         style={styles.bg}
         resizeMode="cover"
       >
-        <LinearGradient
-          colors={["rgba(6,10,22,0.72)", "rgba(6,10,22,0.35)", "rgba(6,10,22,0)"]}
-          locations={[0, 0.35, 0.7]}
-          style={styles.topGradient}
-          pointerEvents="none"
-        />
         <View style={styles.overlay}>
           <View style={[styles.header, { paddingTop: insets.top + 24 }]}>
             <ColorfulTitle text="Fous du Pion" style={styles.brand} />
