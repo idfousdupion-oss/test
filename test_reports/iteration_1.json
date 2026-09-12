@@ -1,0 +1,34 @@
+{
+  "summary": "Frontend-only visual/interaction test on home screen at 390x844 on the preview URL. Verified the ImageBackground on / renders at full brightness with NO dark overlay applied. Code review of /app/frontend/app/index.tsx confirms styles.overlay is now { flex: 1 } with no backgroundColor. DOM inspection of the live page confirmed there is no descendant element under [data-testid=home-screen] with a non-transparent backgroundColor covering the full viewport (no rgba veil, no dark gradient, no absolute-positioned dark View, no tintColor). All three CTA buttons render with the correct brand colors and are tappable. Tapping buvette-button navigates to /webview without JS errors (the external HelloAsso page itself refuses iframe embedding via X-Frame-Options, but this is outside the requested scope). Minor RN Web deprecation warnings observed (textShadow*, shadow*, pointerEvents prop) but not blocking.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/ (home)", "issues": ["First-paint (before Unsplash image finishes loading) the fallback root background is #0A0A0A pitch black. Users on slow networks briefly see a black screen before the board-game photo fades in. Cosmetic only, not a re-introduced overlay."]}
+    ],
+    "react_native_issues": [
+      {"component": "styles (index.tsx & webview.tsx)", "issue": "RN Web deprecation warnings at runtime: 'textShadow*' style props are deprecated (use textShadow shorthand). Reference: /app/frontend/app/index.tsx:147-149 and 158-160"},
+      {"component": "styles (index.tsx & webview.tsx)", "issue": "RN Web deprecation warnings at runtime: 'shadow*' style props are deprecated (use boxShadow shorthand). Reference: /app/frontend/app/index.tsx:176-180 and /app/frontend/app/webview.tsx:50-53"},
+      {"component": "ColorfulTitle View", "issue": "RN Web deprecation warning: props.pointerEvents is deprecated (use style.pointerEvents). Reference: /app/frontend/app/index.tsx:103"}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "None required for the overlay fix — visually confirmed the dark veil is gone and the background image renders at full brightness.",
+    "(Optional) Consider swapping the root fallback backgroundColor from '#0A0A0A' to a warmer tone or a blurhash placeholder so the pre-load flash is less jarring on slow networks.",
+    "(Optional / low priority) Migrate textShadow*/shadow*/pointerEvents to the new RN 0.75+ shorthand APIs to silence deprecation warnings."
+  ],
+  "critical_code_review_comments": [
+    "index.tsx: styles.overlay is correctly `{ flex: 1 }` only — no rgba veil. Confirmed at line 133-135.",
+    "No other absolute/gradient/tintColor overlay exists between the ImageBackground and the CTA row.",
+    "Both files are under 300 lines and well-structured; no DRY or size issues."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Overlay-removal verified on 2026-01. If a future change re-adds any element with a large-area non-transparent backgroundColor, opacity gradient, or a dark rgba layer under [data-testid=home-screen], the check in the browser automation script (walking descendants and flagging elements > 200x300 with non-transparent bg) will catch it. The Unsplash background photo itself is naturally slightly dim — do NOT flag that; only flag if an explicit veil is applied in code or DOM.",
+  "rca_of_issue": "Original bug: overlay View wrapping header + CTAs had backgroundColor: 'rgba(6,10,22,0.42)' which darkened the ImageBackground. Fix (already applied by main agent): removed the backgroundColor property from styles.overlay so it is now `{ flex: 1 }` only. Verified via (1) source read at index.tsx:133-135 and (2) live DOM traversal on the preview URL which found zero descendants of [data-testid=home-screen] with a non-transparent backgroundColor covering the viewport."
+}
