@@ -1,8 +1,6 @@
 import { useRouter } from "expo-router";
-import { Platform, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { Image } from "expo-image";
-import { LinearGradient } from "expo-linear-gradient";
-import MaskedView from "@react-native-masked-view/masked-view";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import * as Haptics from "expo-haptics";
@@ -16,57 +14,28 @@ const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
 
-const GRADIENT_COLORS: [string, string] = ["#00335E", "#E10275"];
+const LETTER_COLORS = ["#00335E", "#E10275"];
 
-function GradientLetter({ char, style }: { char: string; style: any }) {
-  if (char === " ") {
-    return <Text style={style}> </Text>;
-  }
-  if (Platform.OS === "web") {
-    return (
-      <Text
-        style={[
-          style,
-          {
-            // @ts-ignore web-only CSS
-            backgroundImage: `linear-gradient(180deg, ${GRADIENT_COLORS[0]} 0%, ${GRADIENT_COLORS[1]} 100%)`,
-            // @ts-ignore
-            WebkitBackgroundClip: "text",
-            // @ts-ignore
-            backgroundClip: "text",
-            // @ts-ignore
-            WebkitTextFillColor: "transparent",
-            color: "transparent",
-          },
-        ]}
-      >
-        {char}
-      </Text>
-    );
-  }
-  return (
-    <MaskedView
-      maskElement={
-        <Text style={[style, { backgroundColor: "transparent" }]}>{char}</Text>
-      }
-    >
-      <LinearGradient
-        colors={GRADIENT_COLORS}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-      >
-        <Text style={[style, { opacity: 0 }]}>{char}</Text>
-      </LinearGradient>
-    </MaskedView>
-  );
-}
-
-function GradientTitle({ text, style }: { text: string; style: any }) {
+function ColorfulTitle({ text, style }: { text: string; style: any }) {
+  let letterIndex = 0;
   return (
     <View style={{ flexDirection: "row", justifyContent: "center", flexWrap: "wrap" }}>
-      {Array.from(text).map((c, i) => (
-        <GradientLetter key={`${c}-${i}`} char={c} style={style} />
-      ))}
+      {Array.from(text).map((c, i) => {
+        if (c === " ") {
+          return (
+            <Text key={i} style={style}>
+              {"\u00A0"}
+            </Text>
+          );
+        }
+        const color = LETTER_COLORS[letterIndex % LETTER_COLORS.length];
+        letterIndex += 1;
+        return (
+          <Text key={i} style={[style, { color }]}>
+            {c}
+          </Text>
+        );
+      })}
     </View>
   );
 }
@@ -178,7 +147,7 @@ export default function Home() {
     <View style={[styles.root, { paddingTop: insets.top }]} testID="home-screen">
       <StatusBar style="dark" />
       <View style={styles.header}>
-        <GradientTitle text="Fous du Pion" style={styles.brand} />
+        <ColorfulTitle text="Fous du Pion" style={styles.brand} />
       </View>
 
       <View style={styles.content}>
