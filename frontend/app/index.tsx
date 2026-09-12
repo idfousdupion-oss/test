@@ -28,12 +28,12 @@ const useStyles = makeStyles((colors) => ({
   brand: {
     fontSize: 34,
     fontWeight: "900",
-    color: colors.onSurface,
+    color: "#00335E",
     letterSpacing: -0.8,
     textAlign: "center",
   },
   brandAccent: {
-    color: colors.brandPrimary,
+    color: "#E10275",
   },
   content: {
     flex: 1,
