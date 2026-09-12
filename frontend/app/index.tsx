@@ -8,7 +8,7 @@ import Svg, { Circle, Path, Rect } from "react-native-svg";
 import { makeStyles, useTheme } from "@/src/theme";
 
 const BG_IMAGE =
-  "https://images.unsplash.com/photo-1585504198199-20277593b94f?auto=format&fit=crop&w=1200&q=80";
+  "https://images.unsplash.com/photo-1543092587-d8b8feaf362b?auto=format&fit=crop&w=1200&q=80";
 
 const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
