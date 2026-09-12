@@ -132,7 +132,7 @@ const useStyles = makeStyles((colors) => ({
   },
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(6, 10, 22, 0.42)",
+    backgroundColor: "transparent",
   },
   header: {
     paddingHorizontal: 24,
