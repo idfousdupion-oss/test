@@ -60,7 +60,7 @@ function JesterHat({ size = 30 }: { size?: number }) {
 function ColorfulTitle({ text, style }: { text: string; style: any }) {
   let letterIndex = 0;
   const fontSize = (style && style.fontSize) || 34;
-  const hatSize = fontSize * 1.6;
+  const hatSize = fontSize * 0.9;
   return (
     <View style={{ flexDirection: "row", justifyContent: "center", flexWrap: "wrap" }}>
       {Array.from(text).map((c, i) => {
@@ -81,8 +81,8 @@ function ColorfulTitle({ text, style }: { text: string; style: any }) {
                 pointerEvents="none"
                 style={{
                   position: "absolute",
-                  top: -hatSize * 0.5,
-                  left: -hatSize * 0.28,
+                  top: -hatSize * 0.55,
+                  left: -hatSize * 0.1,
                   transform: [{ rotate: "-22deg" }],
                   zIndex: 2,
                 }}
