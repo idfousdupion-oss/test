@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import * as Haptics from "expo-haptics";
+import Svg, { Circle, Path } from "react-native-svg";
 
 import { makeStyles, useTheme } from "@/src/theme";
 
@@ -14,10 +15,52 @@ const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
 
-const LETTER_COLORS = ["#00335E", "#E10275"];
+const LETTER_COLORS = ["#0764B2", "#E10275"];
+
+function JesterHat({ size = 30 }: { size?: number }) {
+  // Classic three-point jester hat with bells, tilted left.
+  // viewBox 100 x 70, fits above a capital letter.
+  return (
+    <Svg width={size} height={size * 0.7} viewBox="0 0 100 70">
+      {/* Left point */}
+      <Path
+        d="M 10 55 L 20 8 L 40 50 Z"
+        fill="#0764B2"
+        stroke="#052F5A"
+        strokeWidth="1.5"
+      />
+      {/* Middle point */}
+      <Path
+        d="M 35 55 L 50 4 L 65 55 Z"
+        fill="#E10275"
+        stroke="#7A0140"
+        strokeWidth="1.5"
+      />
+      {/* Right point */}
+      <Path
+        d="M 60 50 L 80 10 L 90 55 Z"
+        fill="#0764B2"
+        stroke="#052F5A"
+        strokeWidth="1.5"
+      />
+      {/* Base band */}
+      <Path
+        d="M 5 50 Q 50 68 95 50 L 95 58 Q 50 76 5 58 Z"
+        fill="#052F5A"
+      />
+      {/* Bells */}
+      <Circle cx="20" cy="8" r="5" fill="#F4C542" stroke="#8A6A00" strokeWidth="1" />
+      <Circle cx="50" cy="4" r="5.5" fill="#F4C542" stroke="#8A6A00" strokeWidth="1" />
+      <Circle cx="80" cy="10" r="5" fill="#F4C542" stroke="#8A6A00" strokeWidth="1" />
+    </Svg>
+  );
+}
+
 
 function ColorfulTitle({ text, style }: { text: string; style: any }) {
   let letterIndex = 0;
+  const fontSize = (style && style.fontSize) || 34;
+  const hatSize = fontSize * 1.6;
   return (
     <View style={{ flexDirection: "row", justifyContent: "center", flexWrap: "wrap" }}>
       {Array.from(text).map((c, i) => {
@@ -29,11 +72,26 @@ function ColorfulTitle({ text, style }: { text: string; style: any }) {
           );
         }
         const color = LETTER_COLORS[letterIndex % LETTER_COLORS.length];
+        const isFirstLetter = i === 0;
         letterIndex += 1;
         return (
-          <Text key={i} style={[style, { color }]}>
-            {c}
-          </Text>
+          <View key={i} style={{ position: "relative" }}>
+            {isFirstLetter && (
+              <View
+                pointerEvents="none"
+                style={{
+                  position: "absolute",
+                  top: -hatSize * 0.5,
+                  left: -hatSize * 0.28,
+                  transform: [{ rotate: "-22deg" }],
+                  zIndex: 2,
+                }}
+              >
+                <JesterHat size={hatSize} />
+              </View>
+            )}
+            <Text style={[style, { color }]}>{c}</Text>
+          </View>
         );
       })}
     </View>
@@ -47,7 +105,7 @@ const useStyles = makeStyles((colors) => ({
   },
   header: {
     paddingHorizontal: 24,
-    paddingTop: 16,
+    paddingTop: 56,
     paddingBottom: 8,
     alignItems: "center",
   },
