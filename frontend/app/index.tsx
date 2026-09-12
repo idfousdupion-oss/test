@@ -11,7 +11,8 @@ import { makeStyles, useTheme } from "@/src/theme";
 const BG_IMAGE =
   "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80";
 
-const BUVETTE_URL = "https://www.helloasso.com/";
+const BUVETTE_URL =
+  "https://www.helloasso.com/associations/les-fous-du-pion/boutiques/buvette";
 const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
 const ADHESION_URL =
