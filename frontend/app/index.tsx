@@ -9,7 +9,7 @@ import Svg, { Circle, Path } from "react-native-svg";
 import { makeStyles, useTheme } from "@/src/theme";
 
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBnYXRoZXJpbmd8ZW58MHx8fHwxNzg5MjE4Njc3fDA&ixlib=rb-4.1.0&q=85";
+  "https://customer-assets-m6fa6gv7.emergentagent.net/job_donation-app-8/artifacts/3qfahjon_582007449_10231969855494905_4995105215266488191_n.jpg";
 
 const BUVETTE_URL = "https://www.helloasso.com/";
 const TABLE_URL =
@@ -127,10 +127,10 @@ const useStyles = makeStyles((colors) => ({
   },
   heroCard: {
     width: "100%",
-    aspectRatio: 1,
+    aspectRatio: 1.2,
     borderRadius: 20,
     overflow: "hidden",
-    backgroundColor: colors.surfaceTertiary,
+    backgroundColor: "#FFFFFF",
     shadowColor: "#000",
     shadowOpacity: 0.12,
     shadowRadius: 24,
@@ -168,7 +168,7 @@ const useStyles = makeStyles((colors) => ({
     shadowOpacity: 0.35,
   },
   ctaSecondary: {
-    backgroundColor: "#264653",
+    backgroundColor: "#2A9D8F",
   },
   ctaPressed: {
     transform: [{ scale: 0.98 }],
@@ -213,7 +213,7 @@ export default function Home() {
           <Image
             source={{ uri: HERO_IMAGE }}
             style={styles.heroImage}
-            contentFit="cover"
+            contentFit="contain"
             transition={300}
           />
         </View>
