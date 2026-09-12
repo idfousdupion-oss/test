@@ -241,7 +241,7 @@ export default function Home() {
               styles.header,
               {
                 position: "absolute",
-                top: insets.top + 72,
+                top: insets.top + 140,
                 left: 0,
                 right: 0,
               },
