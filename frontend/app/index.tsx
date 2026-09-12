@@ -16,7 +16,7 @@ const TABLE_URL =
   "https://docs.google.com/spreadsheets/d/1GPuamsVc4tMFvhqOkkIHPWuaN7PXIXqlsAuRC22d4SI/edit?gid=1768619558#gid=1768619558";
 const ADHESION_URL = "https://www.helloasso.com/"; // TODO: remplacer par l'URL exacte de la page d'adhésion HelloAsso
 
-const LETTER_COLORS = ["#C0392B", "#F4C542"];
+const LETTER_COLORS = ["#FFFFFF", "#FFFFFF"];
 
 function JesterHat({ size = 30 }: { size?: number }) {
   return (
@@ -150,7 +150,7 @@ const useStyles = makeStyles((colors) => ({
     zIndex: 2,
   },
   brand: {
-    fontSize: 36,
+    fontSize: 40,
     fontWeight: "900",
     letterSpacing: -0.8,
     textAlign: "center",
