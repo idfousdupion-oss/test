@@ -171,9 +171,9 @@ const useStyles = makeStyles((colors) => ({
     borderRadius: 999,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    gap: 12,
-    paddingHorizontal: 24,
+    justifyContent: "flex-start",
+    gap: 16,
+    paddingHorizontal: 32,
     shadowColor: "#000",
     shadowOpacity: 0.35,
     shadowRadius: 16,
@@ -260,7 +260,7 @@ export default function Home() {
               android_ripple={{ color: "rgba(255,255,255,0.15)" }}
             >
               <CalendarIcon />
-              <Text style={styles.ctaText}>Table</Text>
+              <Text style={styles.ctaText}>Tables des fous</Text>
             </Pressable>
 
             <Pressable
