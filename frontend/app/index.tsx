@@ -145,8 +145,8 @@ const useStyles = makeStyles((colors) => ({
     fontWeight: "900",
     letterSpacing: -0.8,
     textAlign: "center",
-    textShadowColor: "rgba(255,255,255,0.85)",
-    textShadowOffset: { width: 0, height: 0 },
+    textShadowColor: "rgba(0,0,0,0.55)",
+    textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 8,
   },
   tagline: {
