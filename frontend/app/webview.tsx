@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -13,7 +13,7 @@ import { StatusBar } from "expo-status-bar";
 
 import { makeStyles, useTheme } from "@/src/theme";
 
-const HELLOASSO_URL = "https://www.helloasso.com/";
+const DEFAULT_URL = "https://www.helloasso.com/";
 
 const useStyles = makeStyles((colors) => ({
   root: {
@@ -96,6 +96,8 @@ export default function WebviewScreen() {
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   const { colors } = useTheme();
+  const params = useLocalSearchParams<{ url?: string }>();
+  const targetUrl = params.url && params.url.length > 0 ? params.url : DEFAULT_URL;
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
@@ -120,7 +122,7 @@ export default function WebviewScreen() {
       {hasError ? (
         <View style={[styles.errorBox, { paddingTop: insets.top + 24 }]}>
           <Text style={styles.errorText}>
-            Impossible de charger la page HelloAsso
+            Impossible de charger la page
           </Text>
           <Pressable
             testID="retry-button"
@@ -139,7 +141,7 @@ export default function WebviewScreen() {
             return (
               <Iframe
                 key={reloadKey}
-                src={HELLOASSO_URL}
+                src={targetUrl}
                 style={{ flex: 1, border: "none", width: "100%", height: "100%" }}
                 onLoad={() => setLoading(false)}
               />
@@ -155,7 +157,7 @@ export default function WebviewScreen() {
         <>
           <WebView
             key={reloadKey}
-            source={{ uri: HELLOASSO_URL }}
+            source={{ uri: targetUrl }}
             style={styles.webview}
             onLoadStart={() => setLoading(true)}
             onLoadEnd={() => setLoading(false)}
