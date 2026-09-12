@@ -145,7 +145,7 @@ const useStyles = makeStyles((colors) => ({
     fontWeight: "900",
     letterSpacing: -0.8,
     textAlign: "center",
-    textShadowColor: "rgba(0,0,0,0.55)",
+    textShadowColor: "rgba(0,0,0,0.14)",
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 8,
   },
