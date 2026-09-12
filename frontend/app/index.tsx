@@ -144,8 +144,6 @@ const useStyles = makeStyles((colors) => ({
   },
   header: {
     paddingHorizontal: 24,
-    paddingTop: 24,
-    paddingBottom: 8,
     alignItems: "center",
     zIndex: 2,
   },
@@ -238,7 +236,17 @@ export default function Home() {
         resizeMode="cover"
       >
         <View style={styles.overlay}>
-          <View style={[styles.header, { paddingTop: insets.top + 24 }]}>
+          <View
+            style={[
+              styles.header,
+              {
+                position: "absolute",
+                top: insets.top + 72,
+                left: 0,
+                right: 0,
+              },
+            ]}
+          >
             <ColorfulTitle text="Fous du Pion" style={styles.brand} />
             <Text style={styles.tagline}>Venez jouer avec nous</Text>
           </View>
