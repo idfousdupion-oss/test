@@ -135,7 +135,6 @@ export default function Home() {
             transition={300}
           />
         </View>
-        <Text style={styles.subtitle}>Soutenez notre campagne</Text>
       </View>
 
       <View
